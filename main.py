@@ -4,7 +4,6 @@ from imgaug import augmenters as iaa
 import imgaug as ia
 import numpy as np
 from PIL import Image
-img = cv2.imread('/Users/choijaeyong/Desktop/긴코센정120mg.jpg')
 
 sometimes = lambda aug: iaa.Sometimes(0.4,aug) #40%만 적용
 seq = iaa.Sequential([
@@ -38,7 +37,7 @@ seq = iaa.Sequential([
 # Grayscale images must have shape (height, width, 1) each.
 # All images must have numpy's dtype uint8
 
-path = '/Users/choijaeyong/Desktop/data/'
+path = './data/'
 imgs =os.listdir(path)
 jpg = [i for i in imgs if i.endswith(".jpg")]
 image_np_list = []
@@ -52,10 +51,10 @@ for x in jpg:
     image_name_list.append(x.replace('.jpg',''))
 
 k = 1
-for i in range(20):
+for i in range(5):
     change = seq(images=image_np_list)
     j = 0
     for x in change:
-        cv2.imwrite('/Users/choijaeyong/Desktop/change/{}_{}.jpg'.format(image_name_list[j],k),x)
+        cv2.imwrite('./result/{}_{}.jpg'.format(image_name_list[j],k),x)
         j += 1
     k+=1
