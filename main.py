@@ -51,7 +51,7 @@ for x in jpg:
     image_name_list.append(x.replace('.jpg',''))
 
 k = 1
-for i in range(5):
+for i in range(20):
     change = seq(images=image_np_list)
     j = 0
     for x in change:
